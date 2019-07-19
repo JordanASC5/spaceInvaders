@@ -22,15 +22,62 @@ Extra credit:
   - Number of hits
   - Number of ships remaining
 5. Randomize enemy speed.
-
+//if user presses right, use shipX ++;
+left, use shipX --;
 */
+var shipX;
+var shipImage;
+var bulletX;
 
 function preload() {
-
+  shipImage = loadImage('images/spaceship.png');
+  spaceBkg = loadImage('images/spaceBkg.png')
 }
 
+
 function setup() {
+  createCanvas(500, 500);
+  shipX = width / 2 - 25;
 }
 
 function draw() {
+  background("black");
+  image(spaceBkg, 0 ,0);
+  fill('white');
+  rect(257, 330, 8, 35, 0);
+    //rect(shipX, height - 100, 50, 100);
+    image(shipImage, shipX, height - 100);
+  if(keyIsDown(LEFT_ARROW)) {
+    shipX -= 3;
+  }
+  if(keyIsDown(LEFT_ARROW) && shipX <= 5){
+    shipX += 3;
+  }
+
+  if(keyIsDown(RIGHT_ARROW)) {
+    shipX += 3;
+  }
+  if(keyIsDown(RIGHT_ARROW) && shipX >= 420){
+    shipX -= 3;
+  }
 }
+
+
+
+
+// function keyPressed() {
+//   if(keyCode == LEFT_ARROW) {
+//     shipX-= 30;
+//   }else{
+//     if(keyCode == RIGHT_ARROW) {
+//       shipX+= 30;
+//     }
+//   }
+// }
+function keyIsDown() {
+  if(keyIsDown(LEFT_ARROW)) {
+    shipX -= 30;
+  }
+}
+
+//image(shipImage , shipX, height -100);
